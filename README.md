@@ -20,7 +20,11 @@ Usage
             ...
             'django_wufoo',
             )
- 
+        ..
+        # Add Wufoo credentials
+        WUFOO_USER = 'your_account_name'
+        WUFOO_API_KEY = 'your_api_key'
+
  2. Run `python manage.py syncdb` to create the django-wufoo tables.
 
  3. Run `python manage.py sync_formdata` to fetch all forms and associated data. Use a cronjob (or perhaps a [Webhook](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Webhooks)) to keep the database synchronized.
