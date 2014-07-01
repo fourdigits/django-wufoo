@@ -8,7 +8,7 @@ Requirements
 
 - Python 2.7
 - Django (1.6)
-- [pyfoo](https://github.com/wufoo/pyfoo), or use [this fork](https://github.com/amites/pyfoo) which has pip support
+- [pyfoo](https://github.com/wufoo/pyfoo), or use [this fork](https://github.com/stetelepta/pyfoo) which has pip support
 
 Usage
 =====
@@ -29,6 +29,19 @@ Usage
 
  3. Run `python manage.py sync_formdata` to fetch all forms and associated data. Use a cronjob (or perhaps a [Webhook](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Webhooks)) to keep the database synchronized.
 
+ 4. Now you are ready to use the django-wufoo models:
+        
+        >>> from django_wufoo.models import WufooForm
+        
+        # get a Wufoo form
+        >>> form = WufooForm.objects.first()
+        
+        # get all fields definitions
+        >>> fields = form.wufoofield_set.all()
+
+        # get all user entries for this form
+        >>> entries = form.wufooentry_set.all()
+        
 Notes
 -----
 
