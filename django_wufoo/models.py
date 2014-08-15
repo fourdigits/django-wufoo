@@ -24,7 +24,7 @@ class WufooField(models.Model):
 class WufooSubField(models.Model):
     wufoo_id = models.CharField(max_length=255)
     label = models.CharField(max_length=255)
-    default_val = models.CharField(max_length=255)
+    default_val = models.TextField()
     field = models.ForeignKey(WufooField)
     
     def __unicode__(self):
@@ -49,7 +49,7 @@ class WufooFieldEntry(models.Model):
     wufoo_entry = models.ForeignKey(WufooEntry)
     field = models.ForeignKey(WufooField)
     subfield = models.ForeignKey(WufooSubField, blank=True, null=True)
-    value = models.CharField(max_length=255)
+    value = models.TextField()
     
     def __unicode__(self):
         return self.value
