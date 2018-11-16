@@ -96,8 +96,7 @@ def sync_entries(wufoo_form):
     for w_entry in wufoo_form.get_entries():
         entry, created = WufooEntry.objects.get_or_create(entry_id=w_entry.get('EntryId', False), form=form)
         exclusion_entries.append(entry)
-
-        for key, value in w_entry.iteritems():
+        for key, value in w_entry.items():
             try:
                 if value and key not in WUFOO_SYSTEM_FIELDS:  # discard fields without a value, and skip system fields
                     field = WufooField.objects.get(wufoo_id=key, form=form)
